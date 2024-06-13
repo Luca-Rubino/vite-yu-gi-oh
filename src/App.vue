@@ -12,7 +12,7 @@ import AppMain from './components/AppMain.vue';
 
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use'./styles/general.scss' as *;
 @use'./styles/partials/mixin' as *;
 @use'./styles/partials/variants' as *;
