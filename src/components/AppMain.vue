@@ -1,4 +1,6 @@
-<script>
+<script setup>
+
+import FoundCard from '../components/FoundCard.vue';
 
 </script>
 
@@ -13,11 +15,12 @@
             </select>
         </article>
 
-        <article>
-            <h2>La mia lista card</h2>
-        </article>
     </section>
 
+    <section>
+        <FoundCard></FoundCard>
+    </section>
+    
 </main>
 
 </template>
@@ -38,7 +41,7 @@ section{
 }
 
 article{
-    width: calc(100% - 20%);
+    width: calc(100% - 21.4%);
 }
 
 select{
