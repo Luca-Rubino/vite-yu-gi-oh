@@ -25,4 +25,7 @@ https://ygoprodeck.com/api-guide/
 
 Svolgimento:
 
-- 
+- installo le dipendenze di cui ho bisogno
+- creo struttura macro componenti per la struttura dell'app
+- personalizzo gli elementi per avere il layout come da traccia
+- installo API per avere gli elementi richiesti in pagina 
