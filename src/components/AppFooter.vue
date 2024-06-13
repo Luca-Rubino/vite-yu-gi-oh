@@ -5,17 +5,23 @@
 <template>
 
 <footer>
+
     <section>
+
         <article>
-            <h2>Il mio Footer</h2>
+            <h2></h2>
         </article>
+
     </section>
+
 </footer>
 
 </template>
 
 <style lang="scss" scoped>
-footer{
-    height: 10rem;
-}
+
+@use '../styles/partials/mixin' as *;
+@use '../styles/partials/variants' as *;
+
+
 </style>

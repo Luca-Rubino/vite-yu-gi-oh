@@ -5,7 +5,7 @@
 <template>
 
 <main>
-    <section class="d-flex">
+    <section>
 
         <article>
             <select name="" id="genereCard">
@@ -23,25 +23,30 @@
 </template>
 
 <style lang="scss" scoped>
+
+@use '../styles/partials/mixin' as *;
+@use '../styles/partials/variants' as *;
+
 main{
-    height: 69rem;
-    background-color: #d48f38;
+    background-color: $color-bg-body;
 }
 
 section{
+    @include d-flex;
     flex-direction: column;
     align-items: center;
 }
 
 article{
-    width: calc(100% - 15%);
+    width: calc(100% - 20%);
 }
 
 select{
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 1.5rem;
     padding: .5rem 5rem .5rem .5rem;
-    background-color: white;
+    background-color: $color-white;
     border: 0;
     border-radius: 5px;
 }
+
 </style>
