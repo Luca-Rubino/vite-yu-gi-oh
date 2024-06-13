@@ -22,3 +22,7 @@ Creare un componente loader da visualizzare fintantoché i risultati non sono pr
 
 Documentazione:
 https://ygoprodeck.com/api-guide/
+
+Svolgimento:
+
+- 
