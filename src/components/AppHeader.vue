@@ -16,10 +16,6 @@
 </template>
 
 <style lang="scss" scoped>
-header{
-    height: 10rem;
-}
-
 article{
     padding: 1rem;
     align-items: center;
