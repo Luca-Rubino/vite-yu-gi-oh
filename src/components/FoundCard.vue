@@ -121,6 +121,10 @@ aside{
                 font-size: .8rem;
                 font-weight: 900;
             }
+
+            li:nth-of-type(3) {
+                color: black;
+            }
         }
     }
 }
