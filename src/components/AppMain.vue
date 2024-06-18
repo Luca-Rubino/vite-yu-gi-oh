@@ -12,7 +12,7 @@ import FoundCard from '../components/FoundCard.vue';
             return {
                 cards: [],
                 archetypes: [],
-                selectedArchetype: [],
+                selectedArchetype: '',
             }
         },
         methods: {
@@ -21,7 +21,6 @@ import FoundCard from '../components/FoundCard.vue';
                 axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
                 .then((response) => {
                     // handle success
-                    console.log(response);
                     this.cards = response.data.data
                 })
                 .catch((error) => {
@@ -46,10 +45,11 @@ import FoundCard from '../components/FoundCard.vue';
             handleChange (event) {
                 console.log(event)
                 this.selectedArchetype=event;
-                // event.target.value è valore che seleziona utente nella select
-                axios.get(this.selectedArchetype === ' '?' https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0': `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${this.selectedArchetype}`)
+                // // value è valore che seleziona utente nella select
+                axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${this.selectedArchetype}`)
                 .then((response) => {
-                    this.cards=response.data;
+                    this.cards=response.data.data;
+                    console.log(this.selectedArchetype)
                 })
                 .catch(function(error){
                     console.log(error);
@@ -86,7 +86,7 @@ import FoundCard from '../components/FoundCard.vue';
     </section>
 
     <section>
-        <FoundCard :cards="cards"></FoundCard>
+        <FoundCard :cards="cards" :selectedArchetype="selectedArchetype"></FoundCard>
     </section>
     
 </main>

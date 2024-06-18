@@ -11,9 +11,8 @@ export default {
 
     props:{
         cards: {
-            type: Array,
-            required: true
-        }
+            
+        },
     },
 
   // Methods are functions that mutate state and trigger updates.
