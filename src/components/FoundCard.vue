@@ -1,9 +1,3 @@
-<script setup>
-
-import axios from 'axios';
-
-</script>
-
 <script>
 
 export default {
@@ -11,40 +5,26 @@ export default {
   // and will be exposed on `this`.
     data() {
         return {
-            cards: [],
+            
+        }
+    },
+
+    props:{
+        cards: {
+            type: Array,
+            required: true
         }
     },
 
   // Methods are functions that mutate state and trigger updates.
   // They can be bound as event handlers in templates.
-    methods: {
-        getApiYugioh() {
-            // Make a request for a user with a given ID
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-            .then((response) => {
-                // handle success
-                console.log(response);
-                this.cards = response.data.data
-            })
-            .catch((error) => {
-                // handle error
-                console.log(error);
-            })
-            .finally(() => {
-                // always executed
-            });
-        }
-    },
-    created() {
-        this.getApiYugioh()
-    },
+    methods: {},
+    created() {},
 
     // Lifecycle hooks are called at different stages
     // of a component's lifecycle.
     // This function will be called when the component is mounted.
-    mounted() {
-        console.log(this.cards.length)
-    }
+    mounted() {}
 }
 </script>
 

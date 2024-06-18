@@ -1,6 +1,72 @@
 <script setup>
 
+import axios from 'axios';
 import FoundCard from '../components/FoundCard.vue';
+
+</script>
+
+<script>
+
+    export default {
+        data() {
+            return {
+                cards: [],
+                archetypes: [],
+                selectedArchetype: [],
+            }
+        },
+        methods: {
+            getApiYugioh() {
+                // Make a request for a user with a given ID
+                axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+                .then((response) => {
+                    // handle success
+                    console.log(response);
+                    this.cards = response.data.data
+                })
+                .catch((error) => {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(() => {
+                    // always executed
+                });
+            },
+            getArchetypes(){
+                axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+                .then((response) => {
+                    this.archetypes=response.data;
+                })
+                .catch(function(error){
+                    console.log(error);
+                })
+                .finally(function(){
+                });
+            },
+            handleChange (event) {
+                console.log(event)
+                this.selectedArchetype=event;
+                // event.target.value è valore che seleziona utente nella select
+                axios.get(this.selectedArchetype === ' '?' https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0': `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${this.selectedArchetype}`)
+                .then((response) => {
+                    this.cards=response.data;
+                })
+                .catch(function(error){
+                    console.log(error);
+                })
+                .finally(function(){
+                });
+            },
+            created() {
+                this.getApiYugioh()
+                this.getArchetypes();
+            },
+        },
+        mounted() {
+            this.getArchetypes();
+            this.getApiYugioh();
+        }
+    }
 
 </script>
 
@@ -10,15 +76,17 @@ import FoundCard from '../components/FoundCard.vue';
     <section>
 
         <article>
-            <select name="" id="genereCard">
-                <option value="Alien">Alien</option>
+            <select name="archetype" id="archetype" v-model="selectedArchetype" @change="handleChange(selectedArchetype)">
+                <option v-for="(archetype, index) in archetypes" :key="index" :value="archetype.archetype_name">
+                    {{ archetype.archetype_name }}
+                </option>
             </select>
         </article>
 
     </section>
 
     <section>
-        <FoundCard></FoundCard>
+        <FoundCard :cards="cards"></FoundCard>
     </section>
     
 </main>
